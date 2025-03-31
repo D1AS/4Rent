@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+
+// The tenant app works differently with users
+// import { doc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../config/firebase';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -9,11 +11,10 @@ const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSignup = async () => {
-    if (email === '' || password === '' || name === '') {
+    if (email === '' || password === '') {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
@@ -33,17 +34,15 @@ const SignupScreen = ({ navigation }) => {
       // Create user with email and password
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      
-      // Add user to Firestore
-      await setDoc(doc(db, 'users', user.uid), {
-        uid: user.uid,
-        email: email,
-        name: name,
-        createdAt: new Date(),
-        role: 'landlord',
-      });
-      
-      // Signup success, navigation will be handled in App.js
+
+      // // Add user to Firestore
+      // await setDoc(doc(db, 'users', user.uid), {
+      //   uid: user.uid,
+      //   email: email,
+      //   createdAt: new Date(),
+      //   role: 'landlord',
+      // });
+
     } catch (error) {
       Alert.alert('Signup Failed', error.message);
     } finally {
@@ -56,7 +55,7 @@ const SignupScreen = ({ navigation }) => {
       <View style={styles.signupContainer}>
         <Text style={styles.title}>4Rent</Text>
         <Text style={styles.subtitle}>Create a new account</Text>
-        
+
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -65,7 +64,7 @@ const SignupScreen = ({ navigation }) => {
           keyboardType="email-address"
           autoCapitalize="none"
         />
-        
+
         <TextInput
           style={styles.input}
           placeholder="Password"
@@ -73,7 +72,7 @@ const SignupScreen = ({ navigation }) => {
           onChangeText={setPassword}
           secureTextEntry
         />
-        
+
         <TextInput
           style={styles.input}
           placeholder="Confirm Password"
@@ -81,11 +80,11 @@ const SignupScreen = ({ navigation }) => {
           onChangeText={setConfirmPassword}
           secureTextEntry
         />
-        
+
         <TouchableOpacity style={styles.signupButton} onPress={handleSignup}>
           <Text style={styles.signupButtonText}>Sign Up</Text>
         </TouchableOpacity>
-        
+
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.loginText}>
             Already have an account? <Text style={styles.loginLink}>Login</Text>

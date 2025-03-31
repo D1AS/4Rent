@@ -17,11 +17,13 @@ const HomeScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useFocusEffect(
+    // to cach the function
     useCallback(() => {
       fetchProperties();
     }, [])
   );
 
+  // Test to remove, you have useFocusEffect above
   useEffect(() => {
     fetchProperties();
   }, []);
@@ -82,7 +84,6 @@ const HomeScreen = ({ navigation }) => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      // Navigation will be handled in App.js
     } catch (error) {
       console.error('Error signing out:', error);
     }

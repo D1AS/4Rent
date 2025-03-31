@@ -97,7 +97,7 @@ const AddPropertyScreen = ({ navigation }) => {
         return;
       }
 
-      // Use Expo's geocoding API
+      // geocoding API
       const results = await Location.geocodeAsync(formData.address);
       
       if (results && results.length > 0) {
@@ -135,7 +135,6 @@ const AddPropertyScreen = ({ navigation }) => {
   };
 
   const handleSubmit = async () => {
-    // Validate required fields
     if (!formData.address) {
       Alert.alert('Error', 'Address is required');
       return;

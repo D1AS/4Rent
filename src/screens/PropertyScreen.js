@@ -299,7 +299,7 @@ const PropertyScreen = ({ route, navigation }) => {
         return;
       }
 
-      // Use Expo's geocoding API
+      // geocoding API
       const results = await Location.geocodeAsync(formData.address);
       
       if (results && results.length > 0) {

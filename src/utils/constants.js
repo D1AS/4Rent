@@ -12,5 +12,4 @@ export const PROPERTY_TYPES = [
   'Commercial'
 ];
 
-// Currency symbol
 export const CURRENCY_SYMBOL = 'CA$'; 

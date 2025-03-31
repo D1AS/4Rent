@@ -40,7 +40,7 @@ const AppStack = () => {
   );
 };
 
-// Root Navigator that switches between Auth and App stacks
+// Root Navigator for Auth and App stacks
 const AppNavigator = ({ user }) => {
   return (
     <NavigationContainer>
