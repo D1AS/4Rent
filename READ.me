@@ -1,0 +1,57 @@
+# Rent Landlord App
+
+This is the **Rent Landlord App**, one of the two apps in the Rent system.
+It allows property owners to manage real estate listings for rental or sale.
+
+## Features
+
+- **Authentication**: Sign in / Sign out functionality for landlords.
+- **Property Management**:
+  - View all available properties.
+  - Create new listings with location data.
+  - Edit and update property information.
+  - Post or publish properties.
+- **Geolocation Support**: Allows setting coordinates for new properties.
+
+## Tech Stack
+
+- **React Native** with **Expo**
+- **Firebase** (Authentication & Firestore)
+- **React Navigation** (Stack & Bottom Tabs)
+- **Maps**: `react-native-maps`
+- **Safe Area Handling**: `react-native-safe-area-context`
+
+## Dependencies
+
+```json
+"dependencies": {
+  "@react-navigation/bottom-tabs": "^7.3.2",
+  "@react-navigation/native": "^7.0.18",
+  "@react-navigation/stack": "^7.2.2",
+  "expo": "~52.0.40",
+  "expo-location": "^18.0.8",
+  "expo-status-bar": "~2.0.1",
+  "firebase": "^11.5.0",
+  "react": "18.3.1",
+  "react-native": "0.76.7",
+  "react-native-gesture-handler": "~2.20.2",
+  "react-native-maps": "^1.20.1",
+  "react-native-safe-area-context": "4.12.0",
+  "react-native-screens": "~4.4.0"
+}
+```
+
+## How to Run
+
+```bash
+git clone <this-repo>
+cd landlord-app
+npm install
+npm start
+```
+
+Make sure Firebase config is properly set in `firebaseConfig.js`.
+
+---
+
+For the tenant side of the application, check the **Rent Tenant App**.
